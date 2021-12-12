@@ -13,14 +13,19 @@ public class Client {
         System.out.println("connection request");
 
         //Create a client socket
-        Socket socket = new Socket("127.0.0.1", port);
+        Socket socket = new Socket("127.0.0.1", 1200);
         System.out.println("Connection established");
 
         // create in / out
         BufferedReader inClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         PrintWriter outClient = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+        System.out.print("INPUT : \n ");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String name = reader.readLine();
 
-        // todo: implement the scenario
+        outClient.println(name);
+        System.out.println(inClient.readLine());
+
 
         //close in / out
         inClient.close();
