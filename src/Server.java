@@ -18,9 +18,13 @@ public class Server {
         // Initialize in / out
         BufferedReader inServer = new BufferedReader(new InputStreamReader(socClient.getInputStream()));
         PrintWriter outServer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socClient.getOutputStream())), true);
+        String msg = inServer.readLine();
 
-        // todo: implement the scenario
-
+        System.out.println(msg);
+        String string = "";
+        System.out.println("Removing vowels...");
+        string = msg.replaceAll("[aeiouyAEIOUY]", "");
+        outServer.println("OUTPUT:"+ string);
         // Close in / out
         inServer.close();
         outServer.close();
